@@ -17,6 +17,6 @@
     "mysqlPassword": "linuxpc",
 
     "sessionName": "NestViewCookie",
-    "sessionMaxAge": 80000,
+    "sessionMaxAge": 604800000,
     "sessionSecret": "nestview"
 }

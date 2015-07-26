@@ -5,7 +5,7 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var MongoStore = require('connect-mongo')(session);
-
+var favicon = require('serve-favicon');
 var conf = require('./config/config.json');
 var route = require('./routes/route');
 var users = require('./routes/users');
@@ -34,7 +34,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(path.join(__dirname, '/public/dist/img/icon.png')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

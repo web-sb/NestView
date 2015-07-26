@@ -12,12 +12,13 @@ router.post('/register', function (req, res, next) {
         "password": req.body.password
     }
     console.log(data);
-    users.register(data, function (err, userEntity) {
+    users.register(data, function (err, result) {
         console.log(userEntity.name);
         if (err == null) {
-            req.session.username = userEntity.name;
-            req.session.email = userEntity.email;
-            req.session.userlevel = userEntity.level;
+            req.session.userid = result._id;
+            req.session.username = result.name;
+            req.session.email = result.email;
+            req.session.userlevel = result.level;
             res.redirect('../home');
         } else {
             res.render('users/info', {
@@ -39,12 +40,13 @@ router.post('/login', function (req, res, next) {
 
         if (err == null) {
             if (req.body.save) {
+                res.cookie.userid = result._id;
                 res.cookie.email = result.email; //保存cookie
                 res.cookie.username = result.name;
                 res.cookie.userlevel = result.level;
             }
+            req.session.userid = result._id;
             req.session.username = result.name;
-            console.log("result.email=" + result.email);
             req.session.email = result.email;
             req.session.userlevel = result.level;
             res.redirect('../home');
@@ -60,18 +62,19 @@ router.post('/login', function (req, res, next) {
 
 /* login */
 router.get('/logout', function (req, res, next) {
-
+    req.session.userid = null;
     req.session.username = null;
     req.session.email = null;
     req.session.level = null;
     req.session.destroy();
 
-    res.cookie(conf.sessionName, 'null', {
-        maxAge: 0
-    });
+    res.cookie.userid = null;
     res.cookie.username = null;
     res.cookie.email = null;
     res.cookie.level = null;
+    res.cookie(conf.sessionName, 'null', {
+        maxAge: 0
+    });
     res.redirect('../');
 
 });

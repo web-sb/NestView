@@ -64,9 +64,10 @@ router.get('/graph', function (req, res, next) {
 /* home */
 router.get('/home', checklogin);
 router.get('/home', function (req, res, next) {
-    console.log("hehe" + req.session.email);
     res.render('home.ejs', {
-        name: req.session.email
+        username: req.session.username,
+        email: req.session.email,
+        userlevel: req.session.userlevel
     });
 });
 
