@@ -1,0 +1,11 @@
+{
+    "get_bee": "---获得Bee连接---",
+    "bee_end": "---Bee连接结束---",
+    "bee_error": "---Bee连接异常---",
+    "bee_data": "---收到Bee数据---",
+    "bee_data_error": "---Beeu数据异常---",
+
+    "user_email_exist": "Email已被注册！",
+    "user_not_exist": "用户不存在！",
+    "user_password_error": "密码错误！"
+}

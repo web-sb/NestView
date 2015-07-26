@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>NestViewer | 服务配置</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.4 -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+
+<body class="skin-blue layout-top-nav">
+    <div class="wrapper">
+        <header class="main-header">
+            <nav class="navbar navbar-static-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a href="index2.html" class="navbar-brand"><b>Nest</b>Viewer</a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">总览 <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">产品服务 <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">用户服务</a>
+                                    </li>
+                                    <li><a href="#">日志服务</a>
+                                    </li>
+                                    <li><a href="#">EMS能源服务</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">设备服务</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">查看全部</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#">解决方案</a>
+                            </li>
+                            <li><a href="#">工具与文档</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- Messages: style can be found in dropdown.less-->
+                            <li class="dropdown messages-menu">
+                                <!-- Menu toggle button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="label label-success">4</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">您有4条用户信息</li>
+                                    <li>
+                                        <!-- inner menu: contains the messages -->
+                                        <ul class="menu">
+                                            <li>
+                                                <!-- start message -->
+                                                <a href="#">
+                                                    <div class="pull-left">
+                                                        <!-- User Image -->
+                                                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                                                    </div>
+                                                    <!-- Message title and timestamp -->
+                                                    <h4>
+                                管理员
+                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                              </h4>
+                                                    <!-- The message -->
+                                                    <p>系统运行正常……</p>
+                                                </a>
+                                            </li>
+                                            <!-- end message -->
+                                        </ul>
+                                        <!-- /.menu -->
+                                    </li>
+                                    <li class="footer"><a href="#">查看全部</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- /.messages-menu -->
+
+                            <!-- Notifications Menu -->
+                            <li class="dropdown notifications-menu">
+                                <!-- Menu toggle button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span class="label label-warning">10</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">您有10条报警信息</li>
+                                    <li>
+                                        <!-- Inner Menu: contains the notifications -->
+                                        <ul class="menu">
+                                            <li>
+                                                <!-- start notification -->
+                                                <a href="#">
+                                                    <i class="fa fa-users text-aqua"></i> 系统进入孤网状态
+                                                </a>
+                                            </li>
+                                            <!-- end notification -->
+                                        </ul>
+                                    </li>
+                                    <li class="footer"><a href="#">查看全部</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- Tasks Menu -->
+                            <li class="dropdown tasks-menu">
+                                <!-- Menu Toggle Button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-flag-o"></i>
+                                    <span class="label label-danger">9</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">您有9条系统信息</li>
+                                    <li>
+                                        <!-- Inner menu: contains the tasks -->
+                                        <ul class="menu">
+                                            <li>
+                                                <!-- Task item -->
+                                                <a href="#">
+                                                    <!-- Task title and progress text -->
+                                                    <h3>
+                                资源空闲提醒
+                                <small class="pull-right">20%</small>
+                              </h3>
+                                                    <!-- The progress bar -->
+                                                    <div class="progress xs">
+                                                        <!-- Change the css width attribute to simulate progress -->
+                                                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">20% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <!-- end task item -->
+                                        </ul>
+                                    </li>
+                                    <li class="footer">
+                                        <a href="#">查看全部</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- User Account Menu -->
+                            <li class="dropdown user user-menu">
+                                <!-- Menu Toggle Button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <!-- The user image in the navbar-->
+                                    <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image" />
+                                    <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                    <span class="hidden-xs">用户</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- The user image in the menu -->
+                                    <li class="user-header">
+                                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                                        <p>
+                                            用户
+                                            <small>创建于2015-05-18</small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Body -->
+                                    <li class="user-body">
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">项目数 5</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">参与数 3</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">浏览员</a>
+                                        </div>
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="#" class="btn btn-default btn-flat">用户设置</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="#" class="btn btn-default btn-flat">登出</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-custom-menu -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </header>
+        <!-- Full Width Column -->
+        <div class="content-wrapper">
+            <div class="container">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        服务配置
+                        <small>配置您的工程所需的服务</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a>
+                        </li>
+                        <li><a href="#">服务配置</a>
+                        </li>
+                    </ol>
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="small-box bg-yellow">
+                                    <div class="inner">
+                                        <h4>用户服务</h4>
+                                        <p>用户管理及权限等配置</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-ios-people-outline"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">查看详情 <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- /.col (left) -->
+                            <div class="col-md-4">
+
+                                <div class="small-box bg-green">
+                                    <div class="inner">
+                                        <h4>日志服务</h4>
+                                        <p>系统运行状态一览</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-ios-gear-outline"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">查看详情 <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+
+                                <!-- /.box -->
+                            </div>
+                            <!-- /.col (left) -->
+                            <div class="col-md-4">
+
+                                <div class="small-box bg-aqua">
+                                    <div class="inner">
+                                        <h4>服务管理</h4>
+                                        <p>管理现有功能开通新功能</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-ios-cart-outline"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">查看详情 <i class="fa fa-arrow-circle-right"></i></a>
+
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                        </div>
+                        <!-- /.col (right) -->
+                    </div>
+                    <!-- /.row -->
+                </section>
+                <section class="content">
+                    <!-- COLOR PALETTE -->
+                    <div class='row'>
+                        <div class="col-md-3">
+                            <div class="col-md-4 info-box bg-blue">
+                                <span class="info-box-icon"><i class="fa fa-gears"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">数据服务</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 100%"></div>
+                                    </div>
+                                    <button class="btn btn-primary">服务说明</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class='box box-primary no-padding color-palette-box'>
+
+                                <div class="box-body">
+                                    <a class="btn btn-app">
+                                        <i class="fa fa-connectdevelop"></i> 基础数据
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <i class="fa fa-calculator"></i> 数据计算
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <i class="fa fa-desktop"></i> 系统数据
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <i class="fa fa-adjust"></i> 光伏预测
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <i class="fa fa-lightbulb-o"></i> 负荷预测
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <span class="badge bg-yellow">3</span>
+                                        <i class="fa fa-cloud"></i> EMS
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <span class="badge bg-green">300</span>
+                                        <i class="fa fa-download"></i> 数据挖掘
+                                    </a>
+
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-md-3">
+                            <div class="col-md-4 info-box bg-green">
+                                <span class="info-box-icon"><i class="fa fa-pie-chart"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">图形服务</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 100%"></div>
+                                    </div>
+                                    <button class="btn btn-success">服务说明</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class='box box-success color-palette-box'>
+
+                                <div class="box-body">
+                                    <a class="btn btn-app">
+                                        <i class="fa fa-sliders"></i> 操作台
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <i class="fa fa-newspaper-o"></i> 数据展板
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <i class="fa fa-random"></i> 实时曲线
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <i class="fa fa-line-chart"></i> 历史曲线
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <i class="fa fa-edit"></i> 标题牌
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <span class="badge bg-yellow">3</span>
+                                        <i class="fa fa-pie-chart"></i> 饼图
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <i class="fa fa-bar-chart"></i> 棒图
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <span class="badge bg-green">300</span>
+                                        <i class="fa fa-area-chart"></i> 堆积图
+                                    </a>
+
+
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </section>
+            </div>
+
+        </div>
+        <!-- /.container -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 0.1.0
+            </div>
+            <strong>Copyright &copy; 2014-2015 <a href="#">Nest Studio</a>.</strong> All rights reserved.
+        </footer>
+    </div>
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- ./wrapper -->
+
+    <!-- jQuery 2.1.4 -->
+    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- SlimScroll -->
+    <script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <!-- FastClick -->
+    <script src='plugins/fastclick/fastclick.min.js'></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/app.min.js" type="text/javascript"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="dist/js/demo.js" type="text/javascript"></script>
+</body>
+
+</html>

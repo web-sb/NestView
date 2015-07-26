@@ -1,0 +1,14 @@
+{
+    "jscodehints.detectedExclusions": [
+        "C:/GithubRes/Drone/server/pollen.js",
+        "C:/GithubRes/Drone/mod/users_mod.js",
+        "C:/GithubRes/Drone/routes/users.js",
+        "C:/GithubRes/NestView/server/pollen.js",
+        "C:/GithubRes/NestView/routes/users.js",
+        "C:/GithubRes/NestView/mod/users_mod.js",
+        "C:/GithubRes/NestView/public/dist/js/pages/dashboard2.js",
+        "E:/GithubRes/NestView/public/dist/js/pages/dashboard.js",
+        "E:/GithubRes/NestView/routes/users.js",
+        "E:/GithubRes/NestView/routes/route.js"
+    ]
+}

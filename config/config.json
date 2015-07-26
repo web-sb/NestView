@@ -1,0 +1,22 @@
+{
+    "period": 1000,
+    "cacheTime": 1000,
+    "port": 8124,
+
+    "pak_type_userHeart": 0,
+    "pak_type_systemLog": 1,
+
+    "mongoPort": 27017,
+    "mongoHost": "127.0.0.1",
+    "mongoDatabase": "test",
+
+    "mysqlHost": "127.0.0.1",
+    "mysqlDatabase": "honeysql",
+    "mysqlPort": 3306,
+    "mysqlUser": "root",
+    "mysqlPassword": "linuxpc",
+
+    "sessionName": "NestViewCookie",
+    "sessionMaxAge": 80000,
+    "sessionSecret": "nestview"
+}
