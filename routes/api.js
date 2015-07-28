@@ -19,7 +19,7 @@ router.get('/project/:id', function (req, res) {
     console.log("获得project ID：" + req.params.id);
     //通过ID查找project
     Project.findOne({
-        _id: req.params.id
+        id: req.params.id
     }, function (err, result) {
         if (err) throw err;
         res.json(result);
@@ -68,80 +68,36 @@ router.post("/project", function (req, res) {
 //更新project
 router.put("/project/:id", function (req, res) {
     Project.findOne({
-            _id: req.params.id
-        },
-        function (err, result) {
-            if (err) throw err;
+        id: req.params.id
+    }, function (err, result) {
+        if (err) throw err;
 
-            if (!result) {
-                res.json({
-                    message: "工程 " + req.params.id + "未找到！",
-                    error: true
-                });
-            }
-
-            result.name = req.body.name;
-            result.info = req.body.info;
-
-            result.save(function (err, result) {
-                if (err) throw err;
-                res.json({
-                    message: "工程修改成功！",
-                    project: result,
-                    error: false
-                });
+        if (!result) {
+            res.json({
+                message: "工程 " + req.params.id + "未找到！",
             });
+        }
 
+        result.name = req.body.name;
+        result.isbn = req.body.isbn;
+        result.author = req.body.author;
+        result.pages = req.body.pages;
+
+        result.save(function (err, result) {
+            if (err) throw err;
+            res.json({
+                message: "工程修改成功！",
+                book: result
+            });
         });
+
+    });
 });
-////更新project
-//router.put("/project/:id", function (req, res) {
-//    Project.findOne({
-//            name: req.body.name
-//        },
-//        function (err, filter) {
-//            if (err) throw err;
-//            console.log("filter=" + filter);
-//            if (!filter) {
-//                Project.findOne({
-//                        _id: req.params.id
-//                    },
-//                    function (err, result) {
-//                        if (err) throw err;
-//
-//                        if (!result) {
-//                            res.json({
-//                                message: "工程 " + req.params.name + "未找到！",
-//                                error: true
-//                            });
-//                        }
-//
-//                        result.name = req.body.name;
-//                        result.info = req.body.info;
-//
-//                        result.save(function (err, result) {
-//                            if (err) throw err;
-//                            res.json({
-//                                message: "工程修改成功！",
-//                                project: result,
-//                                error: false
-//                            });
-//                        });
-//
-//                    });
-//            } else {
-//                res.json({
-//                    message: "工程名已存在！",
-//                    error: true
-//                });
-//            }
-//        });
-//});
 
 //删除指定ID的project
 router.delete("/project/:id", function (req, res) {
     Project.findOneAndRemove({
-        _id: req.params.id
+        id: req.params.id
     }, function (err, result) {
         res.json({
             message: "工程删除成功！",

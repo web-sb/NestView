@@ -256,7 +256,7 @@
                             <!-- /.box -->
                         </div>
                         <div class="col-md-8">
-                            <div id="infoPanel" class="box box-solid">
+                            <div id="infoPanel" class="box box-solid" style="display:none">
                                 <div class="box-header with-border">
                                     <i class="fa fa-text-width"></i>
                                     <h3 class="box-title">工程管理说明</h3>
@@ -302,9 +302,9 @@
                                 <!-- /.box-body -->
                             </div>
 
-                            <div id="projectPanel" class="box box-warning" style="display:none">
+                            <div id="projectPanel" class="box box-warning">
                                 <div class="box-header">
-                                    <h3 class="box-title">工程简介</h3>
+                                    <h3 class="box-title">创建工程</h3>
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body">
@@ -315,31 +315,17 @@
                                             <input id="currentProductName" type="text" class="form-control form-success" data-toggle="tooltip" data-placement="top" title="工程名不能为空" placeholder="工程名称">
                                         </div>
 
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <input id="creater" type="text" class="form-control form-success" placeholder="创建人">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <input id="owner" type="text" class="form-control form-success col-md-6" placeholder="所有者">
-                                                </div>
-                                            </div>
-                                        </div>
-
 
                                         <!-- textarea -->
                                         <div class="form-group">
                                             <textarea id="currentProductInfo" class="form-control" rows="4" placeholder="工程描述" data-toggle="tooltip" data-placement="top" title="工程描述不能为空"></textarea>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <a id="defaultProjectButton" class="btn btn-primary btn-block margin-bottom">设为默认工程</a>
+                                            <div class="col-md-6">
+                                                <a id="defaultProjectButton" class="btn btn-success btn-block margin-bottom">设为默认工程</a>
                                             </div>
-                                            <div class="col-md-4">
-                                                <a id="putProjectButton" data-status="modefy" class="btn btn-success btn-block margin-bottom">修改</a>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <a id="deleteProjectButton" class="btn btn-danger btn-block margin-bottom">删除</a>
+                                            <div class="col-md-6">
+                                                <a id="putProjectButton" class="btn btn-danger btn-block margin-bottom">修改</a>
                                             </div>
                                         </div>
 
