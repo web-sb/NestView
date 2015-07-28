@@ -47,16 +47,19 @@ router.get('/forgot', function (req, res, next) {
 });
 
 /* data */
+router.get('/data', checklogin);
 router.get('/data', function (req, res, next) {
     res.render('data.ejs');
 });
 
 /* display */
+router.get('/display', checklogin);
 router.get('/display', function (req, res, next) {
     res.render('display.ejs');
 });
 
 /* graph */
+router.get('/graph', checklogin);
 router.get('/graph', function (req, res, next) {
     res.render('graph.ejs');
 });
@@ -72,23 +75,33 @@ router.get('/home', function (req, res, next) {
 });
 
 /* log */
+router.get('/log', checklogin);
 router.get('/log', function (req, res, next) {
     res.render('log.ejs');
 });
 
 /* product */
+router.get('/product', checklogin);
 router.get('/product', function (req, res, next) {
     res.render('product.ejs');
 });
 
 /* service */
+router.get('/service', checklogin);
 router.get('/service', function (req, res, next) {
     res.render('service.ejs');
 });
 
 /* user */
+router.get('/user', checklogin);
 router.get('/user', function (req, res, next) {
     res.render('user.ejs');
+});
+
+/* project */
+router.get('/project', checklogin);
+router.get('/project', function (req, res, next) {
+    res.render('project.ejs');
 });
 
 /* error */

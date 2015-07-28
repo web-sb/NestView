@@ -247,7 +247,8 @@
                                     </div>
                                 </div>
                                 <div class="box-body no-padding">
-                                    <ul class="nav nav-pills nav-stacked">
+                                    <ul id="projectUl" class="nav nav-pills nav-stacked">
+
                                     </ul>
                                 </div>
                                 <!-- /.box-body -->
@@ -255,7 +256,7 @@
                             <!-- /.box -->
                         </div>
                         <div class="col-md-8">
-                            <div id="infoPanel" class="box box-solid">
+                            <div id="infoPanel" class="box box-solid" style="display:none">
                                 <div class="box-header with-border">
                                     <i class="fa fa-text-width"></i>
                                     <h3 class="box-title">工程管理说明</h3>
@@ -289,10 +290,42 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <a id="createProjectButton" class="btn btn-success btn-block margin-bottom">创建</a>
+                                                <a id="postProjectButton" class="btn btn-success btn-block margin-bottom">创建</a>
                                             </div>
                                             <div class="col-md-6">
-                                                <a id="defultProjectButton" class="btn btn-danger btn-block margin-bottom">清空</a>
+                                                <a id="clearProjectButton" class="btn btn-danger btn-block margin-bottom">清空</a>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+
+                            <div id="projectPanel" class="box box-warning">
+                                <div class="box-header">
+                                    <h3 class="box-title">创建工程</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <form role="form">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <input id="productID" type="text" class="form-control form-success hidden">
+                                            <input id="currentProductName" type="text" class="form-control form-success" data-toggle="tooltip" data-placement="top" title="工程名不能为空" placeholder="工程名称">
+                                        </div>
+
+
+                                        <!-- textarea -->
+                                        <div class="form-group">
+                                            <textarea id="currentProductInfo" class="form-control" rows="4" placeholder="工程描述" data-toggle="tooltip" data-placement="top" title="工程描述不能为空"></textarea>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <a id="defaultProjectButton" class="btn btn-success btn-block margin-bottom">设为默认工程</a>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <a id="putProjectButton" class="btn btn-danger btn-block margin-bottom">修改</a>
                                             </div>
                                         </div>
 
@@ -302,18 +335,19 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /.row -->
-                </section>
             </div>
-
+            <!-- /.row -->
+            </section>
         </div>
-        <!-- /.container -->
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 0.1.0
-            </div>
-            <strong>Copyright &copy; 2014-2015 <a href="#">Nest Studio</a>.</strong> All rights reserved.
-        </footer>
+
+    </div>
+    <!-- /.container -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 0.1.0
+        </div>
+        <strong>Copyright &copy; 2014-2015 <a href="#">Nest Studio</a>.</strong> All rights reserved.
+    </footer>
     </div>
 
     <!-- /.content-wrapper -->
