@@ -10,9 +10,72 @@ $(document).ready(function () {
         $("#formPanel").show();
 
     });
+    $("#clearProjectButton").click(function () {
+        $("#productName").val("");
+        $("#productInfo").val("");
+    });
+    $("#putProjectButton").click(function () {
 
+        if ($(this).text() == "修改") {
+            formAbled();
+            $(this).text("提交");
+
+        } else {
+            if ($("#currentProductName").val() == "") {
+                $("#currentProductName").focus();
+                return;
+            }
+            if ($("#currentProductInfo").val() == "") {
+                $("#currentProductInfo").focus();
+                return;
+            }
+
+            var data = {
+                "name": $("#currentProductName").val(),
+                "info": $("#currentProductInfo").val(),
+            }
+
+            $.ajax({
+                url: '/api/project/' + $("#productID").val(),
+                type: 'PUT',
+                data: data,
+                success: function (result) {
+                    alert(result.message);
+                    if (!result.error) {
+                        formDisabled();
+                        updateProjectList();
+                        $(this).text("修改");
+                    }
+                }
+            });
+
+
+
+        }
+
+    });
+    $("#deleteProjectButton").click(function () {
+        $.ajax({
+            url: '/api/project/' + $("#productID").val(),
+            type: 'DELETE',
+            success: function (result) {
+                alert(result.message);
+                updateProjectList();
+                $("#infoPanel").show();
+                $("#projectPanel").hide();
+                $("#formPanel").hide();
+            }
+        });
+    });
     $("#postProjectButton").click(function () {
-        validate();
+        if ($("#productName").val() == "") {
+            $("#productName").focus();
+            return;
+        }
+        if ($("#productInfo").val() == "") {
+            $("#productInfo").focus();
+            return;
+        }
         data = {
             "name": $("#productName").val(),
             "info": $("#productInfo").val()
@@ -24,22 +87,17 @@ $(document).ready(function () {
             data: data,
             success: function (result) {
                 alert(result.message);
+                updateProjectList();
+                $("#productName").val("");
+                $("#productInfo").val("");
+                $("#infoPanel").show();
+                $("#projectPanel").hide();
+                $("#formPanel").hide();
             }
         });
     });
 });
 
-var validate = function () {
-    if ($("#productName").val() == "") {
-        $("#productName").focus();
-        return;
-    }
-
-    if ($("#productInfo").val() == "") {
-        $("#productInfo").focus();
-        return;
-    }
-}
 
 var updateProjectList = function () {
     $.ajax({
@@ -49,12 +107,16 @@ var updateProjectList = function () {
             $("#projectUl").empty();
 
             for (var i = 0; i < result.length; i++) {
-                var li = "<li><a id='projectLi' href='javascript:submitData();' data-projectID='" + result[i]._id + "'><i class='fa fa-file-text-o'></i>" + result[i].name + "</a></li>";
+                var li = "<li><a class='projectLi' href='javascript:submitData();' data-projectID='" + result[i]._id + "'><i class='fa fa-file-text-o'></i>" + result[i].name + "</a></li>";
                 $("#projectUl").append(li);
             }
 
-            $("#projectLi").click(function () {
+            $(".projectLi").click(function () {
                 updateProjectInfo($(this).attr("data-projectID"));
+                $("#putProjectButton").text("修改");
+                $("#infoPanel").hide();
+                $("#projectPanel").show();
+                $("#formPanel").hide();
             });
 
         }
@@ -63,19 +125,31 @@ var updateProjectList = function () {
 
 var updateProjectInfo = function (id) {
     $.ajax({
-        url: '/api/project:' + id,
+        url: '/api/project/' + id,
         type: 'GET',
         success: function (result) {
+            $("#productID").val(result._id);
+            $("#currentProductName").val(result.name);
+            $("#currentProductInfo").val(result.info);
+            $("#creater").val(result.creater);
+            $("#owner").val(result.owner);
             $("#infoPanel").hide();
             $("#formPanel").hide();
-            $("#currentProductName").val();
-            $("#currentProductInfo").val();
-
             $("#projectPanel").show();
+            formDisabled();
+
         }
     });
+}
 
+var formDisabled = function () {
+    $("#currentProductName").attr("disabled", true);
+    $("#currentProductInfo").attr("disabled", true);
+    $("#creater").attr("disabled", true);
+    $("#owner").attr("disabled", true);
+}
 
-
-
+var formAbled = function () {
+    $("#currentProductName").attr("disabled", false);
+    $("#currentProductInfo").attr("disabled", false);
 }
