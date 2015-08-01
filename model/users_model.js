@@ -1,26 +1,9 @@
 /****************************模块初始****************************/
 var letters = require('../config/letters.json');
 var mongoose = require('../server/mongo.js');
+var model = require('./model.js');
+var Users = model.User;
 /****************************模块初始****************************/
-
-/****************************用户格式****************************/
-//定义用户文件格式
-var userSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    password: String,
-    time: {
-        type: Date,
-        default: Date.now
-    },
-    level: {
-        type: Number,
-        default: 0
-    }
-});
-//创建用户集合
-var Users = mongoose.model('Users', userSchema);
-/****************************用户格式****************************/
 
 /****************************添加用户****************************/
 //添加用户

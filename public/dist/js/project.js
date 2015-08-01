@@ -1,6 +1,3 @@
-//(function ($, AdminLTE) {
-//    alert($("#123").hide());
-//})(jQuery, $.AdminLTE);
 $(document).ready(function () {
     updateProjectList();
 
@@ -11,8 +8,8 @@ $(document).ready(function () {
 
     });
     $("#clearProjectButton").click(function () {
-        $("#productName").val("");
-        $("#productInfo").val("");
+        $("#projectName").val("");
+        $("#projectInfo").val("");
     });
     $("#putProjectButton").click(function () {
 
@@ -21,42 +18,40 @@ $(document).ready(function () {
             $(this).text("提交");
 
         } else {
-            if ($("#currentProductName").val() == "") {
-                $("#currentProductName").focus();
+            if ($("#currentProjectName").val() == "") {
+                $("#currentProjectName").focus();
                 return;
             }
-            if ($("#currentProductInfo").val() == "") {
-                $("#currentProductInfo").focus();
+            if ($("#currentProjectInfo").val() == "") {
+                $("#currentProjectInfo").focus();
                 return;
             }
 
             var data = {
-                "name": $("#currentProductName").val(),
-                "info": $("#currentProductInfo").val(),
+                "name": $("#currentProjectName").val(),
+                "info": $("#currentProjectInfo").val(),
             }
 
             $.ajax({
-                url: '/api/project/' + $("#productID").val(),
+                url: '/api/project/' + $("#projectID").val(),
                 type: 'PUT',
                 data: data,
                 success: function (result) {
-                    alert(result.message);
+
                     if (!result.error) {
+                        $("#putProjectButton").text("修改");
                         formDisabled();
                         updateProjectList();
-                        $(this).text("修改");
                     }
+                    alert(result.message);
                 }
             });
-
-
-
         }
 
     });
     $("#deleteProjectButton").click(function () {
         $.ajax({
-            url: '/api/project/' + $("#productID").val(),
+            url: '/api/project/' + $("#projectID").val(),
             type: 'DELETE',
             success: function (result) {
                 alert(result.message);
@@ -68,17 +63,17 @@ $(document).ready(function () {
         });
     });
     $("#postProjectButton").click(function () {
-        if ($("#productName").val() == "") {
-            $("#productName").focus();
+        if ($("#projectName").val() == "") {
+            $("#projectName").focus();
             return;
         }
-        if ($("#productInfo").val() == "") {
-            $("#productInfo").focus();
+        if ($("#projectInfo").val() == "") {
+            $("#projectInfo").focus();
             return;
         }
-        data = {
-            "name": $("#productName").val(),
-            "info": $("#productInfo").val()
+        var data = {
+            "name": $("#projectName").val(),
+            "info": $("#projectInfo").val()
         }
 
         $.ajax({
@@ -87,12 +82,27 @@ $(document).ready(function () {
             data: data,
             success: function (result) {
                 alert(result.message);
-                updateProjectList();
-                $("#productName").val("");
-                $("#productInfo").val("");
-                $("#infoPanel").show();
-                $("#projectPanel").hide();
-                $("#formPanel").hide();
+                if (!result.error) {
+                    updateProjectList();
+                    $("#projectName").val("");
+                    $("#projectInfo").val("");
+                    $("#infoPanel").show();
+                    $("#projectPanel").hide();
+                    $("#formPanel").hide();
+                }
+            }
+        });
+    });
+    $("#defaultProjectButton").click(function () {
+        var data = {
+            "projectID": $("#projectID").val()
+        }
+        $.ajax({
+            url: '/api/user/myID/defaultProject/',
+            type: 'PUT',
+            data: data,
+            success: function (result) {
+                alert(result.message);
             }
         });
     });
@@ -104,6 +114,7 @@ var updateProjectList = function () {
         url: '/api/project',
         type: 'GET',
         success: function (result) {
+
             $("#projectUl").empty();
 
             for (var i = 0; i < result.length; i++) {
@@ -128,9 +139,9 @@ var updateProjectInfo = function (id) {
         url: '/api/project/' + id,
         type: 'GET',
         success: function (result) {
-            $("#productID").val(result._id);
-            $("#currentProductName").val(result.name);
-            $("#currentProductInfo").val(result.info);
+            $("#projectID").val(result._id);
+            $("#currentProjectName").val(result.name);
+            $("#currentProjectInfo").val(result.info);
             $("#creater").val(result.creater);
             $("#owner").val(result.owner);
             $("#infoPanel").hide();
@@ -143,13 +154,13 @@ var updateProjectInfo = function (id) {
 }
 
 var formDisabled = function () {
-    $("#currentProductName").attr("disabled", true);
-    $("#currentProductInfo").attr("disabled", true);
+    $("#currentProjectName").attr("disabled", true);
+    $("#currentProjectInfo").attr("disabled", true);
     $("#creater").attr("disabled", true);
     $("#owner").attr("disabled", true);
 }
 
 var formAbled = function () {
-    $("#currentProductName").attr("disabled", false);
-    $("#currentProductInfo").attr("disabled", false);
+    $("#currentProjectName").attr("disabled", false);
+    $("#currentProjectInfo").attr("disabled", false);
 }

@@ -13,7 +13,6 @@ router.post('/register', function (req, res, next) {
     }
     console.log(data);
     users.register(data, function (err, result) {
-        console.log(userEntity.name);
         if (err == null) {
             req.session.userid = result._id;
             req.session.username = result.name;
