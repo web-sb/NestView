@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var MongoStore = require('connect-mongo')(session);
 var favicon = require('serve-favicon');
 var conf = require('./config/config.json');
-var route = require('./routes/route');
+var page = require('./routes/page');
 var api = require('./routes/api');
 
 
@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', route);
+app.use('/', page);
 app.use('/api', api);
 
 // catch 404 and forward to error handler

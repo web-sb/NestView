@@ -1,32 +1,32 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* 登录验证 */
 var checklogin = function (req, res, next) {
-        if (req.session.username != null) { //使用cookie
-            next();
-        } else {
-            res.redirect('/login');
-        }
+    if (req.session.username != null) {
+        next();
+    } else {
+        res.redirect('/login');
     }
-    /* index */
+}
+
+/* 封面页 */
 router.get('/', function (req, res, next) {
     res.render('index.ejs', {
         title: 'Express'
     });
 });
 
-/* index */
+/* 封面页 */
 router.get('/index', function (req, res, next) {
     res.render('index.ejs', {
         title: 'Express'
     });
 });
 
-/* login */
+/* 登录页 */
 router.get('/login', function (req, res, next) {
-    //if (res.cookie["username"] != null) { //使用cookie
-    if (req.session.email != null) { //使用cookie
+    if (req.session.email != null) {
         res.redirect('home');
     } else {
         res.render('login.ejs');
@@ -36,35 +36,35 @@ router.get('/login', function (req, res, next) {
 
 
 
-/* register */
+/* 注册页 */
 router.get('/register', function (req, res, next) {
     res.render('register.ejs');
 });
 
-/* forgot */
+/* 找回密码页 */
 router.get('/forgot', function (req, res, next) {
     res.render('forgot.ejs');
 });
 
-/* data */
+/* 数据页 */
 router.get('/data', checklogin);
 router.get('/data', function (req, res, next) {
     res.render('data.ejs');
 });
 
-/* display */
+/* 显示页 */
 router.get('/display', checklogin);
 router.get('/display', function (req, res, next) {
     res.render('display.ejs');
 });
 
-/* graph */
+/* 图形页 */
 router.get('/graph', checklogin);
 router.get('/graph', function (req, res, next) {
     res.render('graph.ejs');
 });
 
-/* home */
+/* 首页 */
 router.get('/home', checklogin);
 router.get('/home', function (req, res, next) {
     res.render('home.ejs', {
@@ -74,37 +74,37 @@ router.get('/home', function (req, res, next) {
     });
 });
 
-/* log */
+/* 日志页 */
 router.get('/log', checklogin);
 router.get('/log', function (req, res, next) {
     res.render('log.ejs');
 });
 
-/* product */
+/* 产品页 */
 router.get('/product', checklogin);
 router.get('/product', function (req, res, next) {
     res.render('product.ejs');
 });
 
-/* service */
+/* 服务页 */
 router.get('/service', checklogin);
 router.get('/service', function (req, res, next) {
     res.render('service.ejs');
 });
 
-/* user */
+/* 用户页 */
 router.get('/user', checklogin);
 router.get('/user', function (req, res, next) {
     res.render('user.ejs');
 });
 
-/* project */
+/* 工程页 */
 router.get('/project', checklogin);
 router.get('/project', function (req, res, next) {
     res.render('project.ejs');
 });
 
-/* error */
+/* 错误页 */
 router.get('/error', function (req, res, next) {
     res.render('error.ejs');
 });
