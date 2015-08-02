@@ -8,7 +8,6 @@ var MongoStore = require('connect-mongo')(session);
 var favicon = require('serve-favicon');
 var conf = require('./config/config.json');
 var route = require('./routes/route');
-var users = require('./routes/users');
 var api = require('./routes/api');
 
 
@@ -45,7 +44,6 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', route);
-app.use('/users', users);
 app.use('/api', api);
 
 // catch 404 and forward to error handler
