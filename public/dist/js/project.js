@@ -95,7 +95,9 @@ $(document).ready(function () {
     });
     $("#defaultProjectButton").click(function () {
         var data = {
-            "projectID": $("#projectID").val()
+            "projectID": $("#projectID").val(),
+            "projectName": $("#currentProjectName").val()
+
         }
         $.ajax({
             url: '/api/user/myID/defaultProject/',

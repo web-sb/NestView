@@ -156,7 +156,8 @@ router.post("/user", function (req, res) {
             res.json({
                 message: "用户添加成功！",
                 project: result,
-                error: false
+                error: false,
+                next: "/host/login"
             });
         }
     });
@@ -200,12 +201,16 @@ router.put("/user/:id", function (req, res) {
 
 //更新user
 router.put("/user/:id/defaultProject", function (req, res) {
-    if (id == "myID") id = req.session.userid;
+    console.log(req.params.id);
+    console.log(req.session.userid);
+    var searchId = req.params.id;
+    if (searchId === "myID") searchId = req.session.userid;
+
+
     User.findOne({
-            _id: req.params.id
+            _id: searchId
         },
         function (err, result) {
-            //            if (err) throw err;
             if (err) console.log("查找用户ID: " + req.params.id + " 异常");
             if (!result) {
                 res.json({
@@ -214,7 +219,9 @@ router.put("/user/:id/defaultProject", function (req, res) {
                 });
             }
 
-            result.projectID = req.body.projectID;
+            result.defaultProject._id = req.body.projectID;
+            result.defaultProject.name = req.body.projectName;
+
 
             result.save(function (err, result) {
                 if (err) {
@@ -248,8 +255,66 @@ router.delete("/user/:id", function (req, res) {
 /****************************End user API****************************/
 
 
+/****************************host API****************************/
+//用户接入
+router.post("/host/", function (req, res) {
+    var data = {
+        "email": req.body.email,
+        "password": req.body.password,
+        "save": req.body.save
+    }
+    User.findOne({
+        email: data.email,
+        password: data.password
+    }, function (err, result) {
+        if (err) console.log("用户登录异常！");
+        if (!result) {
+            res.json({
+                message: "用户名或密码错误！",
+                error: true
+            });
+        } else {
+            if (data.save) {
+                res.cookie.userid = result._id;
+                res.cookie.email = result.email; //保存cookie
+                res.cookie.username = result.name;
+                res.cookie.userlevel = result.level;
+                res.cookie.currentproject = result.defaultProject._id;
+            }
+            req.session.userid = result._id;
+            req.session.username = result.name;
+            req.session.email = result.email;
+            req.session.userlevel = result.level;
+            req.session.currentproject = result.defaultProject._id;
 
+            var next = "/home";
+            if (result.defaultProject._id === null) next = "/project";
 
+            res.json({
+                message: "登录成功！",
+                error: false,
+                next: next
+            });
 
+        }
+    });
+});
+
+//用户退出
+router.delete("/host", function (req, res) {
+    req.session.userid = null;
+    req.session.username = null;
+    req.session.email = null;
+    req.session.level = null;
+    req.session.currentproject = null;
+    req.session.destroy();
+
+    res.json({
+        message: "用户已退出！",
+        error: false,
+        next: "/"
+    });
+});
+/****************************host API****************************/
 
 module.exports = router;
