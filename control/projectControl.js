@@ -1,5 +1,5 @@
 var mongoose = require('../server/mongo.js');
-var model = require('../model/model.js');
+var model = require('../model/projectModel.js');
 var Project = model.Project;
 
 module.exports.getList = function (req, res) {

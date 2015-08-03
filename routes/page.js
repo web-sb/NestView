@@ -35,7 +35,6 @@ router.get('/login', function (req, res, next) {
 });
 
 
-
 /* 注册页 */
 router.get('/register', function (req, res, next) {
     res.render('register.ejs');

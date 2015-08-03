@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var host = require('../control/host.js');
-var user = require('../control/user.js');
-var project = require('../control/project.js');
+var host = require('../control/hostControl.js');
+var user = require('../control/userControl.js');
+var project = require('../control/projectControl.js');
 /****************************project API****************************/
 //获得全部project
 router.get('/project', project.getList);

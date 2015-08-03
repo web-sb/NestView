@@ -1,5 +1,5 @@
 var mongoose = require('../server/mongo.js');
-var model = require('../model/model.js');
+var model = require('../model/userModel.js');
 var User = model.User;
 
 module.exports.post = function (req, res) {

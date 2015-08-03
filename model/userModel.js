@@ -1,23 +1,4 @@
 var mongoose = require('../server/mongo.js');
-
-
-/****************************project格式定义****************************/
-var projectSchema = mongoose.Schema({
-    name: {
-        type: String,
-        unique: true
-    },
-    info: String,
-    creater: String,
-    owner: String,
-    time: {
-        type: Date,
-        default: Date.now
-    }
-});
-var Project = mongoose.model('project', projectSchema);
-module.exports.Project = Project;
-/****************************./project格式定义****************************/
 /****************************user格式定义****************************/
 var userSchema = mongoose.Schema({
     name: String,
@@ -45,6 +26,5 @@ var userSchema = mongoose.Schema({
         default: 0
     }
 });
-var User = mongoose.model('user', userSchema);
-module.exports.User = User;
+module.exports.User = mongoose.model('user', userSchema);
 /****************************./user格式定义****************************/
