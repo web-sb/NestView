@@ -45,7 +45,7 @@ module.exports.post = function (req, res) {
             //添加成功消息
             res.json({
                 message: "用户添加成功！",
-                project: result,
+                user: result,
                 error: false,
                 next: "/host/login"
             });
