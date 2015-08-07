@@ -12,7 +12,6 @@ module.exports.getList = function (req, res) {
     });
 }
 
-
 module.exports.get = function (req, res) {
     console.log("获得user ID：" + req.params.id);
     //通过ID查找project
@@ -24,7 +23,6 @@ module.exports.get = function (req, res) {
         res.json(result);
     });
 }
-
 
 module.exports.post = function (req, res) {
     console.log("添加user Name：" + req.body.name);
@@ -53,7 +51,6 @@ module.exports.post = function (req, res) {
     });
 
 }
-
 
 module.exports.put = function (req, res) {
     User.findOne({
@@ -89,7 +86,8 @@ module.exports.put = function (req, res) {
         });
 }
 
-module.exports.put.DefaulPtroject = function (req, res) {
+module.exports.defaultProject = Object;
+module.exports.defaultProject.put = function (req, res) {
     console.log(req.params.id);
     console.log(req.session.userid);
     var searchId = req.params.id;

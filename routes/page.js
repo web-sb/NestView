@@ -63,6 +63,36 @@ router.get('/graph', function (req, res, next) {
     res.render('graph.ejs');
 });
 
+/* 曲线图 */
+router.get('/line', checklogin);
+router.get('/line', function (req, res, next) {
+    res.render('graph/line.ejs');
+});
+
+/* 柱状图 */
+router.get('/bar', checklogin);
+router.get('/bar', function (req, res, next) {
+    res.render('graph/bar.ejs');
+});
+
+/* 雷达图 */
+router.get('/radar', checklogin);
+router.get('/radar', function (req, res, next) {
+    res.render('graph/radar.ejs');
+});
+
+/* 极地图 */
+router.get('/polar', checklogin);
+router.get('/polar', function (req, res, next) {
+    res.render('graph/polar.ejs');
+});
+
+/* 饼图 */
+router.get('/pie', checklogin);
+router.get('/pie', function (req, res, next) {
+    res.render('graph/pie.ejs');
+});
+
 /* 首页 */
 router.get('/home', checklogin);
 router.get('/home', function (req, res, next) {
