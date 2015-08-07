@@ -14,4 +14,5 @@
         checkboxClass: 'icheckbox_flat-green',
         radioClass: 'iradio_flat-green'
     });
+    $(".my-colorpicker2").colorpicker();
 })(jQuery, $.AdminLTE);

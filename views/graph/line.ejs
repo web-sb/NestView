@@ -383,25 +383,82 @@
                                 </li>
                                 <li class="pull-left header"><i class="fa fa-th"></i> 配置</li>
                             </ul>
-                            <div class="tab-content">
+                            <div class="tab-content col-md-12">
                                 <div class="tab-pane" id="tab_1-1">
                                     123
                                 </div>
                                 <!-- /.tab-pane -->
-                                <div class="tab-pane" id="tab_2-2">
-                                    <!-- iCheck -->
-                                    <div class="box box-solid">
-                                        <div class="box-body">
-                                            <!-- Minimal style -->
-                                            <!-- checkbox -->
-                                            <div class="form-group">
-                                                <label>
-                                                    <input type="checkbox" class="minimal" checked /> Minimal skin checkbox
-                                                </label>
+                                <div class="tab-pane  col-md-12" id="tab_2-2">
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>
+                                                <input type="checkbox" class="minimal" checked /> 显示网格并设置颜色
+                                            </label>
+
+                                            <div class="input-group my-colorpicker2 ">
+
+                                                <input type="text" class="form-control" />
+                                                <div class="input-group-addon">
+                                                    <i></i>
+                                                </div>
                                             </div>
+
+
+                                            <label>网格线宽</label>
+                                            <input type="text" class="form-control">
+
+                                            <label>
+                                                <input type="checkbox" class="minimal" checked /> 曲线平滑并设置平滑度
+                                            </label>
+                                            <input type="text" class="form-control">
+                                            <label>
+                                                <input type="checkbox" class="minimal" checked /> 显示水平线
+                                            </label>
+                                            <label class="pull-right">
+                                                <input type="checkbox" class="minimal" checked /> 显示垂直线
+                                            </label>
                                         </div>
+                                        <!-- /.form group -->
                                     </div>
-                                    <!-- /.box -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>
+                                                <input type="checkbox" class="minimal" checked /> 显示圆点并设置半径
+                                            </label>
+                                            <input type="text" class="form-control">
+                                            <label>设置点外圈宽度</label>
+                                            <input type="text" class="form-control">
+                                            <label>设置点触控范围</label>
+                                            <input type="text" class="form-control">
+                                            <label>设置点触发范围</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <!-- /.form group -->
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>
+                                                <input type="checkbox" class="minimal" checked /> 显示数据集并设置宽度
+                                            </label>
+                                            <input type="text" class="form-control">
+                                            <label>数据集填充色</label>
+                                            <div class="input-group my-colorpicker2 ">
+
+                                                <input type="text" class="form-control" />
+                                                <div class="input-group-addon">
+                                                    <i></i>
+                                                </div>
+                                            </div>
+                                            <label>标题风格</label>
+                                            <select class="form-control">
+                                                <option>风格 1</option>
+                                                <option>风格 2</option>
+                                                <option>风格 3</option>
+                                            </select>
+                                        </div>
+                                        <!-- /.form group -->
+                                    </div>
                                 </div>
                                 <!-- /.tab-pane -->
                                 <div class="tab-pane active" id="tab_3-2">
@@ -425,6 +482,8 @@
                             <!-- /.tab-content -->
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-12">
                         <div class="box">
 
@@ -500,8 +559,8 @@
                                     </li>
                                 </ul>
                             </div>
-                            <!-- /.box -->
                         </div>
+                        <!-- /.box -->
                     </div>
                 </div>
 
