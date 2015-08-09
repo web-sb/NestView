@@ -84,6 +84,7 @@ router.delete("/widget/line/:id", widget.line.delete);
 
 //获得全部widget.bar
 router.get('/widget/bar', widget.bar.getList);
+
 //获得指定ID的widget.bar
 router.get('/widget/bar/:id', widget.bar.get);
 
@@ -141,5 +142,4 @@ router.put("/widget/pie/:id", widget.pie.put);
 //删除指定ID的widget.pie
 router.delete("/widget/pie/:id", widget.pie.delete);
 /****************************End widget API****************************/
-
 module.exports = router;

@@ -11,13 +11,13 @@ var lineSchema = mongoose.Schema({
             type: String,
             default: "曲线图简介"
         },
-        width: {
-            type: Number,
-            default: 12
+        creator: {
+            type: String,
+            default: null
         },
-        hight: {
-            type: Number,
-            default: 2
+        project: {
+            type: String,
+            default: null
         },
         dataSize: {
             type: Number,
@@ -115,10 +115,13 @@ var lineSchema = mongoose.Schema({
             default: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
         }
     },
-    datas: [{
-        labels: {
-            label: String
-        },
+    data: {
+        labels: [{
+            label: {
+                type: String,
+                default: null
+            }
+        }],
         datasets: [{
             label: {
                 type: String,
@@ -153,7 +156,7 @@ var lineSchema = mongoose.Schema({
                 default: null
             }
         }]
-    }]
+    }
 });
 module.exports.Line = mongoose.model('line', lineSchema);
 //Bar

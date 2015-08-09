@@ -6,11 +6,13 @@ var Radar = model.Radar;
 var Polar = model.Polar;
 var Pie = model.Pie;
 //Line
-module.exports.line = Object;
+module.exports.line = new Object;
 
 module.exports.line.getList = function (req, res) {
-    //找到全部project
-    Line.find({}, function (err, result) {
+    //找到全部line
+    Line.find({}, {
+        'config': 1
+    }, function (err, result) {
         if (err) console.log("获取Line异常");
         //返回结果
         console.log(result);
@@ -20,7 +22,7 @@ module.exports.line.getList = function (req, res) {
 
 module.exports.line.get = function (req, res) {
     console.log("获得Line ID：" + req.params.id);
-    //通过ID查找project
+    //通过ID查找line
     Line.findOne({
         _id: req.params.id
     }, function (err, result) {
@@ -30,32 +32,63 @@ module.exports.line.get = function (req, res) {
 }
 
 module.exports.line.post = function (req, res) {
-    console.log("添加Line Name：" + req.body.name);
-    var line = new Line({
-        name: req.body.name,
-        info: req.body.info,
-        creater: req.session.username,
-        owner: req.session.username
-    });
+    console.log("line.post");
+    if (req.body.action === "create") {
+        var line = new Line({
+            config: {
+                creater: req.session.username,
+                project: req.session.currentproject
+            }
+        });
 
-    line.save(function (err, result) {
-        if (err) {
-            res.json({
-                message: "Line名已存在！",
-                project: result,
-                error: true
-            });
-        } else {
-            //成功后返回添加完成的实例
-            //添加成功消息
-            res.json({
-                message: "Line添加成功！",
-                project: result,
-                error: false
-            });
-        }
-    });
+        line.save(function (err, result) {
+            if (err) {
+                res.json({
+                    message: "Line添加失败！",
+                    line: result,
+                    error: true
+                });
+            } else {
+                //成功后返回添加完成的实例
+                //添加成功消息
+                res.json({
+                    message: "Line添加成功！",
+                    line: result,
+                    error: false
+                });
+            }
+        });
+    }
+    if (req.body.action === "copy") {
+        Line.findOne({
+                _id: req.body.lineTemplateId
+            },
+            function (err, ret) {
+                var line = new Line({
+                    config: ret.config,
+                    option: ret.option,
+                    data: ret.data
+                });
 
+                line.save(function (err, result) {
+                    if (err) {
+                        res.json({
+                            message: "Line复制失败！",
+                            line: result,
+                            error: true
+                        });
+                    } else {
+                        //成功后返回添加完成的实例
+                        //添加成功消息
+                        res.json({
+                            message: "Line复制成功！",
+                            line: result,
+                            error: false
+                        });
+                    }
+                });
+            });
+    }
 }
 
 module.exports.line.put = function (req, res) {
@@ -63,6 +96,7 @@ module.exports.line.put = function (req, res) {
             _id: req.params.id
         },
         function (err, result) {
+            console.log("123");
             if (err) console.log("更新Line ID: " + req.params.id + " 异常");
             if (!result) {
                 res.json({
@@ -71,8 +105,25 @@ module.exports.line.put = function (req, res) {
                 });
             }
 
-            result.name = req.body.name;
-            result.info = req.body.info;
+            result.config.name = req.body.config.name;
+            result.config.info = req.body.config.info;
+
+            result.option.scaleShowGridLines = req.body.option.scaleShowGridLines;
+            result.option.scaleGridLineColor = req.body.option.scaleGridLineColor;
+            result.option.scaleGridLineWidth = req.body.option.scaleGridLineWidth
+            result.option.bezierCurve = req.body.option.bezierCurve;
+            result.option.bezierCurveTension = req.body.option.bezierCurveTension;
+            result.option.scaleShowHorizontalLines = req.body.option.scaleShowHorizontalLines
+            result.option.scaleShowVerticalLines = req.body.option.scaleShowVerticalLines;
+            result.option.datasetStroke = req.body.option.datasetStroke;
+            result.option.datasetStrokeWidth = req.body.option.datasetStrokeWidth;
+            result.option.datasetFill = req.body.option.datasetFill;
+            result.option.scaleShowGridLines = req.body.option.scaleShowGridLines;
+            result.option.pointDot = req.body.option.pointDot;
+            result.option.pointDotRadius = req.body.option.pointDotRadius;
+            result.option.pointDotStrokeWidth = req.body.option.pointDotStrokeWidth;
+            result.option.pointHitDetectionRadius = req.body.option.pointHitDetectionRadius;
+            result.data = req.body.data;
 
             result.save(function (err, result) {
                 if (err) {
@@ -83,7 +134,7 @@ module.exports.line.put = function (req, res) {
                 } else {
                     res.json({
                         message: "Line修改成功！",
-                        project: result,
+                        line: result,
                         error: false
                     });
                 }
@@ -106,11 +157,13 @@ module.exports.line.delete = function (req, res) {
 //end line
 
 //bar
-module.exports.bar = Object;
+module.exports.bar = new Object;
 
 module.exports.bar.getList = function (req, res) {
     //找到全部project
-    bar.find({}, function (err, result) {
+    bar.find({}, {
+        'config': 1
+    }, function (err, result) {
         if (err) console.log("获取Bar异常");
         //返回结果
         console.log(result);
@@ -204,13 +257,14 @@ module.exports.bar.delete = function (req, res) {
 }
 
 //end bar
-
 //radar
-module.exports.radar = Object;
+module.exports.radar = new Object;
 
 module.exports.radar.getList = function (req, res) {
     //找到全部project
-    radar.find({}, function (err, result) {
+    radar.find({}, {
+        'config': 1
+    }, function (err, result) {
         if (err) console.log("获取Radar异常");
         //返回结果
         console.log(result);
@@ -306,11 +360,13 @@ module.exports.radar.delete = function (req, res) {
 //end radar
 
 //polar
-module.exports.polar = Object;
+module.exports.polar = new Object;
 
 module.exports.polar.getList = function (req, res) {
     //找到全部project
-    polar.find({}, function (err, result) {
+    polar.find({}, {
+        'config': 1
+    }, function (err, result) {
         if (err) console.log("获取Polar异常");
         //返回结果
         console.log(result);
@@ -406,11 +462,13 @@ module.exports.polar.delete = function (req, res) {
 //end polar
 
 //pie
-module.exports.pie = Object;
+module.exports.pie = new Object;
 
 module.exports.pie.getList = function (req, res) {
     //找到全部project
-    pie.find({}, function (err, result) {
+    pie.find({}, {
+        'config': 1
+    }, function (err, result) {
         if (err) console.log("获取Pie异常");
         //返回结果
         console.log(result);
