@@ -65,11 +65,28 @@ module.exports.line.post = function (req, res) {
             },
             function (err, ret) {
                 var line = new Line({
-                    config: ret.config,
-                    option: ret.option,
-                    data: ret.data
+                    config: {
+                        name: ret.config.name,
+                        info: ret.config.info
+                    },
+                    option: {
+                        scaleShowGridLines: ret.option.scaleShowGridLines,
+                        scaleGridLineColor: ret.option.scaleGridLineColor,
+                        scaleGridLineWidth: ret.option.scaleGridLineWidth,
+                        bezierCurve: ret.option.bezierCurve,
+                        bezierCurveTension: ret.option.bezierCurveTension,
+                        scaleShowHorizontalLines: ret.option.scaleShowHorizontalLines,
+                        scaleShowVerticalLines: ret.option.scaleShowVerticalLines,
+                        datasetStroke: ret.option.datasetStroke,
+                        datasetStrokeWidth: ret.option.datasetStrokeWidth,
+                        datasetFill: ret.option.datasetFill,
+                        scaleShowGridLines: ret.option.scaleShowGridLines,
+                        pointDot: ret.option.pointDot,
+                        pointDotRadius: ret.option.pointDotRadius,
+                        pointDotStrokeWidth: ret.option.pointDotStrokeWidth,
+                        pointHitDetectionRadius: ret.option.pointHitDetectionRadius
+                    }
                 });
-
                 line.save(function (err, result) {
                     if (err) {
                         res.json({
