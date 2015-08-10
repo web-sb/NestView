@@ -88,7 +88,7 @@ var lineSchema = mongoose.Schema({
         //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
         pointHitDetectionRadius: {
             type: Number,
-            default: 20
+            default: 5
         },
 
         //Boolean - Whether to show a stroke for datasets
@@ -391,7 +391,7 @@ var radarSchema = mongoose.Schema({
         //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
         pointHitDetectionRadius: {
             type: Number,
-            default: 20
+            default: 5
         },
 
         //Boolean - Whether to show a stroke for datasets

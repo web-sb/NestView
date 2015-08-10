@@ -13,6 +13,8 @@
         "E:/Git/NestView/public/dist/js/pages/dashboard.js",
         "E:/Git/NestView/public/dist/js/pages/dashboard2.js",
         "E:/Git/NestView/app.js",
-        "E:/Git/NestView/public/dist/js/project.js"
+        "E:/Git/NestView/public/dist/js/project.js",
+        "E:/Git/NestView/页面/plugins/timepicker/bootstrap-timepicker.min.js",
+        "E:/Git/NestView/public/dist/js/graph/line.js"
     ]
 }

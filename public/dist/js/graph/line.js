@@ -2,6 +2,7 @@
 $(document).ready(function () {
 
     updateLineList();
+
     $(".select2").select2();
     //iCheck for checkbox and radio inputs
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
@@ -30,6 +31,7 @@ $(document).ready(function () {
     $("#dataAddButton").click(dataAddButton);
     $("#dataDeleteButton").click(dataDeleteButton);
     $("#dataSaveButton").click(dataSaveButton);
+    $("#refreshButton").click(updateChart);
 
     $("#datasets").change(function () {
         updateDataForm($(this).children('option:selected').data("index"));
@@ -209,6 +211,10 @@ var createButton = function () {
 
 //保存表单
 var saveButton = function () {
+    if ($("#id").val() === "") {
+        alert("请先选择要修改的曲线！");
+        return;
+    }
     $.ajax({
         url: '/api/widget/line/' + $("#id").val(),
         type: 'GET',
@@ -338,7 +344,7 @@ var updateLineList = function () {
 
             for (var i = 0; i < result.length; i++) {
 
-                var line = "<tr class='line'><td>" + result[i].config.name + "</td><td>" + result[i].config.info + "</td><td>" + "<ul class='pagination pagination-sm no-margin pull-right' data-id='" + result[i]._id + "'>" + "<li><a  class='modefyButton' href='#'> 修改 </a></li>" + "<li><a class='copyButton' href='#'> 复制 </a></li>" + "<li><a class='deleteButton' href='#'> 删除 </a></li>" + "</ul></td></tr>"
+                var line = "<tr class='line'><td>" + result[i].config.name + "</td><td>" + result[i].config.info + "</td><td>" + "<ul class='pagination pagination-sm no-margin pull-right' data-id='" + result[i]._id + "'>" + "<li><a  class='modefyButton' href='javascript:void(0);'> 修改 </a></li>" + "<li><a class='copyButton' href='javascript:void(0);'> 复制 </a></li>" + "<li><a class='deleteButton' href='javascript:void(0);'> 删除 </a></li>" + "</ul></td></tr>"
                 $("tbody#lineList").append(line);
             }
 
@@ -348,4 +354,101 @@ var updateLineList = function () {
 
         }
     });
+}
+
+
+
+
+
+
+
+
+
+var randomScalingFactor = function () {
+    return Math.round(Math.random() * -100 + 50)
+};
+
+
+
+var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
+
+var initFlag = false;
+var updateChart = function () {
+    if ($("#id").val() === "") {
+        alert("请先选择要显示的曲线！");
+        return;
+    }
+    if (initFlag) {
+        currentChart.destroy();
+    } else {
+        initFlag = true;
+    }
+
+    var chartOptions = {
+        //Boolean - If we should show the scale at all
+        showScale: true,
+        //Boolean - Whether grid lines are shown across the chart
+        scaleShowGridLines: $("#scaleShowGridLines").is(':checked'),
+        //String - Colour of the grid lines
+        scaleGridLineColor: $("#scaleGridLineColor").val(),
+        //Number - Width of the grid lines
+        scaleGridLineWidth: $("#scaleGridLineWidth").val(),
+        //Boolean - Whether to show horizontal lines (except X axis)
+        scaleShowHorizontalLines: $("#scaleShowHorizontalLines").is(':checked'),
+        //Boolean - Whether to show vertical lines (except Y axis)
+        scaleShowVerticalLines: $("#scaleShowVerticalLines").is(':checked'),
+        //Boolean - Whether the line is curved between points
+        bezierCurve: $("#bezierCurve").is(':checked'),
+        //Number - Tension of the bezier curve between points
+        bezierCurveTension: $("#bezierCurveTension").val(),
+        //Boolean - Whether to show a dot for each point
+        pointDot: $("#pointDot").is(':checked'),
+        //Number - Radius of each point dot in pixels
+        pointDotRadius: $("#pointDotRadius").val(),
+        //Number - Pixel width of point dot stroke
+        pointDotStrokeWidth: $("#pointDotStrokeWidth").val(),
+        //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+        pointHitDetectionRadius: $("#pointHitDetectionRadius").val(),
+        //Boolean - Whether to show a stroke for datasets
+        datasetStroke: $("#datasetStroke").is(':checked'),
+        //Number - Pixel width of dataset stroke
+        datasetStrokeWidth: $("#datasetStrokeWidth").val(),
+        //Boolean - Whether to fill the dataset with a color
+        datasetFill: $("#datasetFill").is(':checked'),
+        //String - A legend template
+        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+        //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: false,
+        //Boolean - whether to make the chart responsive to window resizing
+        responsive: true
+    };
+    var chartData = {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [
+            {
+                label: "Electronics",
+                fillColor: "rgba(210, 214, 222, 1)",
+                strokeColor: "rgba(210, 214, 222, 1)",
+                pointColor: "rgba(210, 214, 222, 1)",
+                pointStrokeColor: "#c1c7d1",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+            },
+            {
+                label: "Digital Goods",
+                fillColor: "rgba(60,141,188,0.9)",
+                strokeColor: "rgba(60,141,188,0.8)",
+                pointColor: "#3b8bba",
+                pointStrokeColor: "rgba(60,141,188,1)",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(60,141,188,1)",
+                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+            }
+          ]
+    };
+    // This will get the first returned node in the jQuery collection.
+    newChart = new Chart(lineChartCanvas).Line(chartData, chartOptions);
+    currentChart = newChart;
+
 }
