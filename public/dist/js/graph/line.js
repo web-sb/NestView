@@ -259,6 +259,7 @@ var saveButton = function () {
                 success: function (result) {
                     alert(result.message);
                     updateLineList();
+                    updateChart();
                 }
             });
         }
@@ -276,6 +277,7 @@ var undoButton = function () {
         type: 'GET',
         success: function (result) {
             setForm(result);
+            updateChart();
         }
     });
 }
@@ -288,6 +290,7 @@ var modefyButton = function () {
         success: function (result) {
             clearDataForm();
             setForm(result);
+            updateChart();
         }
     });
 }
@@ -308,7 +311,6 @@ var copyButton = function () {
                 setForm(result.line);
                 updateLineList();
                 clearDataForm();
-                setForm(result);
             }
         }
     });
