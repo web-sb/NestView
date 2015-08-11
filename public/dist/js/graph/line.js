@@ -434,7 +434,7 @@ var updateChart = function () {
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(220,220,220,1)",
                 data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-            },
+                },
             {
                 label: "Digital Goods",
                 fillColor: "rgba(60,141,188,0.9)",
@@ -444,7 +444,7 @@ var updateChart = function () {
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(60,141,188,1)",
                 data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-            }
+                }
           ]
     };
     // This will get the first returned node in the jQuery collection.
